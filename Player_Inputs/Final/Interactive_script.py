@@ -11,28 +11,10 @@ from pyglet import gl
 from pyglet.window import key as keycodes
 
 from rominfo import *
+from baselines.common.retro_wrappers import *
 
-radius = 6
 
-def dec2bin(dec):
-    binN = []
-    while dec != 0:
-        binN.append(dec % 2)
-        dec = dec / 2
-    return binN
-
-def printState(state):
-    state_n = np.reshape(state, (2*radius + 1, 2*radius + 1))
-    state_str = '\n'.join(','.join(str(cell) for cell in row) for row in state_n)
-    print(state_str)
-    _ = os.system("clear")
-    mm = {'0': '  ', '1': '$$', '-1': '@@'}
-    for i, l in enumerate(state_n):
-        line = list(map(lambda x: mm[str(x)], l))
-        if i == radius + 1:
-            line[radius] = 'X'
-
-def getRam(env):
+def getRamI(env):
     ram = []
     for k, v in env.data.memory.blocks.items():
         ram += list(v)
@@ -42,27 +24,26 @@ class RetroInteractive(abc.ABC):
     """
     Interactive setup for retro games
     """
-    def __init__(self, game, state, scenario, record):
-        env = retro.make(game=game, state=state, scenario=scenario, record=record)
-        self._buttons = env.buttons
+    def __init__(self, env, sync=True, tps=60, aspect_ratio=None):
+        self.inputs = []
+        self.states = []
         self.env = env
         self.tps = 60
         self.aspect_ratio = 4/3
-
         obs = env.reset()
         self._image = self.get_image(obs, env)
         assert len(self._image.shape) == 3 and self._image.shape[2] == 3, 'must be an RGB image'
         image_height, image_width = self._image.shape[:2]
 
-        if self.aspect_ratio is None:
-            self.aspect_ratio = image_width / image_height
+        if aspect_ratio is None:
+            aspect_ratio = image_width / image_height
 
         display = pyglet.canvas.get_display()
         screen = display.get_default_screen()
         max_win_width = screen.width * 0.9
         max_win_height = screen.height * 0.9
         win_width = image_width
-        win_height = int(win_width / self.aspect_ratio)
+        win_height = int(win_width / aspect_ratio)
 
         while win_width > max_win_width or win_height > max_win_height:
             win_width //= 2
@@ -87,7 +68,10 @@ class RetroInteractive(abc.ABC):
         gl.glTexParameteri(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MIN_FILTER, gl.GL_NEAREST)
         gl.glTexImage2D(gl.GL_TEXTURE_2D, 0, gl.GL_RGBA8, image_width, image_height, 0, gl.GL_RGB, gl.GL_UNSIGNED_BYTE, None)
 
+        self._env = env
         self._win = win
+
+        # self._render_human = render_human
         self._key_previous_states = {}
 
         self._steps = 0
@@ -95,30 +79,41 @@ class RetroInteractive(abc.ABC):
         self._episode_returns = 0
         self._prev_episode_returns = 0
 
+        self._tps = tps
+        self._sync = sync
         self._current_time = 0
         self._sim_time = 0
         self._max_sim_frames_per_update = 4
 
     def _update(self, dt):
-        max_dt = self._max_sim_frames_per_update / self.tps
+        # cap the number of frames rendered so we don't just spend forever trying to catch up on frames
+        # if rendering is slow
+        max_dt = self._max_sim_frames_per_update / self._tps
         if dt > max_dt:
             dt = max_dt
 
+        # catch up the simulation to the current time
         self._current_time += dt
         while self._sim_time < self._current_time:
-            self._sim_time += 1 / self.tps
+            self._sim_time += 1 / self._tps
 
+            keys_clicked = set()
             keys_pressed = set()
             for key_code, pressed in self._key_handler.items():
                 if pressed:
                     keys_pressed.add(key_code)
 
+                if not self._key_previous_states.get(key_code, False) and pressed:
+                    keys_clicked.add(key_code)
                 self._key_previous_states[key_code] = pressed
 
             if keycodes.ESCAPE in keys_pressed:
                 self._on_close()
 
+            # assume that for async environments, we just want to repeat keys for as long as they are held
             inputs = keys_pressed
+            if self._sync:
+                inputs = keys_clicked
 
             keys = []
             for keycode in inputs:
@@ -128,33 +123,55 @@ class RetroInteractive(abc.ABC):
 
             act = self.keys_to_act(keys)
 
+            if not self._sync or act is not None:
+                obs, rew, done, _info = self._env.step(act)
+
+                #New code added
+
+                saved_inputs = np.array(act)
+                saved_inputs = saved_inputs.astype(int)
+                self.inputs.append(saved_inputs)
+                ram = getRamI(self._env)
+                state, x, y = getInputs(ram)
+                self.states.append(obs)
+                #np.save('data2.npy', dataset)
+                state = np.reshape(state, (13, 13))
+                print(state)
+            
             if act is not None:
                 obs, rew, done, _info = self.env.step(act)
 
                 saved_inputs = np.array(act)
                 saved_inputs = saved_inputs.astype(int)
 
-                ram = getRam(self.env)
+                ram = getRamI(self.env)
                 state, x, y = getInputs(ram)
 
                 state = np.reshape(state, (13, 13))
-                printState(state)
+                #printState(state)
 
                 self._image = self.get_image(obs, self.env)
                 self._episode_returns += rew
                 self._steps += 1
                 self._episode_steps += 1
 
-                if self._steps % self.tps == 0 or done:
+                np.set_printoptions(precision=2)
+                if self._sync:
+                    done_int = int(done)  # shorter than printing True/False
+                    mess = 'steps={self._steps} episode_steps={self._episode_steps} rew={rew} episode_returns={self._episode_returns} done={done_int}'.format(
+                        **locals()
+                    )
+                    #print(mess)
+                elif self._steps % self._tps == 0 or done:
                     episode_returns_delta = self._episode_returns - self._prev_episode_returns
                     self._prev_episode_returns = self._episode_returns
                     mess = 'steps={self._steps} episode_steps={self._episode_steps} episode_returns_delta={episode_returns_delta} episode_returns={self._episode_returns}'.format(
                         **locals()
                     )
-                    print(mess)
+                    #print(mess)
 
                 if done:
-                    self.env.reset()
+                    self._env.reset()
                     self._episode_steps = 0
                     self._episode_returns = 0
                     self._prev_episode_returns = 0
@@ -177,7 +194,7 @@ class RetroInteractive(abc.ABC):
         )
 
     def _on_close(self):
-        self.env.close()
+        self._env.close()
         sys.exit(0)
 
     @abc.abstractmethod
@@ -213,11 +230,11 @@ class RetroInteractive(abc.ABC):
 
 class MyRetroInteractive(RetroInteractive):
     def __init__(self, game, state, scenario, record):
-        super().__init__(game=game, state=state, scenario=scenario, record=record)
-        self.inputs = []
-        self.states = []
+        env = retro.make(game=game, state=state, scenario=scenario, record=record)
+        self._buttons = env.buttons
+        super().__init__(env=env, sync=False, tps=60, aspect_ratio=4/3)
 
-    def get_image(self, obs, env):
+    def get_image(self, _obs, env):
         return env.render(mode='rgb_array')
 
     def keys_to_act(self, keys):
@@ -246,7 +263,8 @@ class MyRetroInteractive(RetroInteractive):
             'RESET': 'ENTER' in keys,
             'START': 'ENTER' in keys,
         }
-        return [inputs[b] for b in self.env.buttons]
+        return [inputs[b] for b in self._buttons]
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -261,4 +279,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
