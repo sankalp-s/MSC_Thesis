@@ -27,6 +27,7 @@ class RetroInteractive(abc.ABC):
     def __init__(self, env, sync=True, tps=60, aspect_ratio=None):
         self.inputs = []
         self.states = []
+        self.statearray = []
         self.env = env
         self.tps = 60
         self.aspect_ratio = 4/3
@@ -133,28 +134,21 @@ class RetroInteractive(abc.ABC):
                 self.inputs.append(saved_inputs)
                 ram = getRamI(self._env)
                 state, x, y = getInputs(ram)
-                self.states.append(obs)
+                self.states.append(obs) #saved the image observations
                 #np.save('data2.npy', dataset)
+                #print(act)
+
+                #saving the array outputs of the state
                 state = np.reshape(state, (13, 13))
-                print(state)
-            
-            if act is not None:
-                obs, rew, done, _info = self.env.step(act)
+                saved_output = np.array(state)
+                saved_output = saved_output.astype(int)
+                self.statearray.append(saved_output)
+                #print(state)
 
-                saved_inputs = np.array(act)
-                saved_inputs = saved_inputs.astype(int)
-
-                ram = getRamI(self.env)
-                state, x, y = getInputs(ram)
-
-                state = np.reshape(state, (13, 13))
-                #printState(state)
-
-                self._image = self.get_image(obs, self.env)
+                self._image = self.get_image(obs, self._env)
                 self._episode_returns += rew
                 self._steps += 1
                 self._episode_steps += 1
-
                 np.set_printoptions(precision=2)
                 if self._sync:
                     done_int = int(done)  # shorter than printing True/False
