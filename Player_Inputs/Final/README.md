@@ -1,4 +1,4 @@
-# Random Agent
+# Interactive script
 
 [Interactive_script.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Final/Interactive_script.py)
 
@@ -28,3 +28,10 @@ To use the script:
 1. Install the required dependencies.
 2. Clone or download the repository.
 3. Run the script from the command line, specifying the desired retro game, state, scenario, and recording settings using command-line arguments.
+
+
+# Cross check files
+
+[view_files.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Final/view_files.py)
+
+This script provides functions to extract attributes from the RAM memory of the game Super Mario World. It includes functions to retrieve the agent's position, obtain information about sprites displayed on the screen, check for obstacles, and gather inputs within a specified radius around the agent. These functions are useful for creating AI agents or analyzing game states in reinforcement learning tasks. Additionally, the script contains a function to retrieve the entire RAM memory from the game environment, which can be utilized for various debugging or analysis purposes.
