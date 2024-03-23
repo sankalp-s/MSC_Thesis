@@ -124,6 +124,10 @@ def getState(ram, radius):
   return ','.join(map(str,state)), x, y  
   
 def getRam(env):
-    return np.array(list(env.data.memory.blocks[8257536]))
+    ram = []
+    for k, v in env.data.memory.blocks.items():
+        ram += list(v)
+    return np.array(ram)
+    #return np.array(list(env.data.memory.blocks[8257536]))
     
 
