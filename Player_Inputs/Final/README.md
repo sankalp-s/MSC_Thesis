@@ -15,6 +15,12 @@ The `RetroInteractive` class extends `Interactive` and is specialized for retro 
 **Main Functionality:**  
 The `main()` function orchestrates the script's operation. It parses command-line arguments to specify the retro game, state, scenario, and recording settings. Then, it initializes a `RetroInteractive` instance with these settings and runs the interactive game loop.
 
+# Replay Sessions
+
+[replay_session.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Final/replay_session.py)
+
+This Python script loads training data from a NumPy .npy file, simulates gameplay in the Super Mario World environment using the loaded actions, and renders the environment after each action. It leverages the retro library to create the game environment and applies actions sequentially to simulate gameplay. Optionally, a time delay can be introduced to observe the game rendering more clearly.
+
 # View files
 
 [view_files.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Final/view_files.py)
