@@ -26,4 +26,4 @@ The issue with TensorFlow and Apple M1 chip primarily arises from the architectu
 
 Solution(For python 3.8.5): [Link](https://stackoverflow.com/questions/65383338/zsh-illegal-hardware-instruction-python-when-installing-tensorflow-on-macbook)
 
-To address compatibility issues with TensorFlow and Apple M1 chips, you can install the necessary wheel files separately. The solution provided above includes a link to download the wheel files.
+To address compatibility issues with TensorFlow and Apple M1 chips, you can install the necessary wheel files separately. The solution provided above includes a link to download the wheel files [Link](https://drive.google.com/drive/folders/1oSipZLnoeQB0Awz8U68KYeCPsULy_dQ7).
