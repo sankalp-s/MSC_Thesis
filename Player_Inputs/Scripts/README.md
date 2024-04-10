@@ -16,7 +16,7 @@ These scripts collectively provide essential functionalities for dataset aggrega
 
 The "[Gathering_Input](https://github.com/sankalp-s/MSC_Thesis/tree/main/Player_Inputs/Scripts/Gathering_Input)" folder comprises a collection of scripts designed to facilitate the extraction and preprocessing of input data for reinforcement learning tasks, particularly in the context of retro gaming environments.
 
-## Script Overview
+## Scripts Overview
 
 1. **[RAM_Input.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/Gathering_Input/RAM_Input.py)**: This script provides a framework for creating interactive gym environments, specifically tailored for retro games. It defines classes such as Interactive and RetroInteractive for environment initialization, state updates, rendering, user input handling, and main event loop execution. Each data point generated consists of an extracted RAM state (a 13x13 flattened array) and its corresponding action sequence, represented as a binary array of size 12.
 
@@ -31,7 +31,7 @@ These scripts are intended to be incorporated into reinforcement learning pipeli
 
 The "[View_or_Replay_Files](https://github.com/sankalp-s/MSC_Thesis/tree/main/Player_Inputs/Scripts/View_or_Replay_Files)" folder contains two Python scripts designed to facilitate the viewing and replaying of gameplay sessions stored in NumPy .npy files.
 
-## Script Overview
+## Scripts Overview
 
 1. **[replay_sessions.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/View_or_Replay_Files/replay_sessions.py)**: This script loads training data from a NumPy .npy file, simulates gameplay in the Super Mario World environment using the loaded actions, and renders the environment after each action. It utilizes the retro library to create the game environment and applies actions sequentially to simulate gameplay. Additionally, it provides an option to introduce a time delay to observe the game rendering more clearly.
 
