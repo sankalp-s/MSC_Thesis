@@ -6,7 +6,7 @@ This Python script loads training data from a NumPy .npy file, simulates gamepla
 
 # View files
 
-[view_files.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/view_files.py)
+[view_files.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/View_or_Replay_Files/view_files.py)
 
 This Python script provides a function `open_npy_file()` to load data from a NumPy `.npy` file. It allows users to specify the file path and returns the loaded data as a NumPy array. The function includes error handling to deal with cases where the file is not found or errors occur during loading.
 
