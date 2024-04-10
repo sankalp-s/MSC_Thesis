@@ -46,7 +46,7 @@ This script snippet can be incorporated into reinforcement learning pipelines wh
 
 # ROM file
 
-[rominfo.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/rominfo.py)
+[rominfo.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/Gathering_Input/rominfo.py)
 
 This script provides functions to extract attributes from the RAM memory of the game Super Mario World. It includes functions to retrieve the agent's position, obtain information about sprites displayed on the screen, check for obstacles, and gather inputs within a specified radius around the agent. These functions are useful for creating AI agents or analyzing game states in reinforcement learning tasks. Additionally, the script contains a function to retrieve the entire RAM memory from the game environment, which can be utilized for various debugging or analysis purposes.
 
