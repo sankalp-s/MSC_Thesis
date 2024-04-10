@@ -1,6 +1,6 @@
 # Combine Image sessions
 
-[Combine_Image_session.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/Combining_sessions/Combine_Image_sessions.py)
+[Combine_Image_sessions.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/Combining_sessions/Combine_Image_sessions.py)
 
 This script is designed to aggregate multiple datasets stored in `.npy` files, each containing image state and corresponding action data. 
 
@@ -31,7 +31,7 @@ Upon execution, the script generates a master dataset file named `Master_image.n
 
 # Combine RAM sessions
 
-[Combine_RAM_session.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/Combining_sessions/Combine_RAM_sessions.py)
+[Combine_RAM_sessions.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Player_Inputs/Scripts/Combining_sessions/Combine_RAM_sessions.py)
 
 This script is designed to convert binary arrays to integers and aggregate multiple datasets stored in `.npy` files. Each dataset comprises state and action data collected during interactions with the environment.
 
