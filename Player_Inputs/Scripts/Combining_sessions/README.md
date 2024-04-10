@@ -88,9 +88,6 @@ The script performs the following operations:
 
 8. **Saving Filtered Dataset**: The filtered dataset, free from instances solely characterized by forward movement, is saved as a new .npy file for further analysis or training.
 
-By removing instances solely characterized by forward movement, the script aims to enhance the dataset's suitability for multi-output multiclass classification tasks, ensuring accurate model learning.
-
-
 ## Usage
 
 To use the script:
@@ -99,5 +96,4 @@ To use the script:
 
 ## Output
 
-Upon execution, the script provides summary information about the dataset, including its size and label occurrences. It also generates a filtered dataset by removing instances with specified values and saves it as a new `.npy` file.
-
+By removing instances solely characterized by forward movement, the script aims to enhance the dataset's suitability for multi-output multiclass classification tasks, ensuring accurate model learning.
