@@ -50,7 +50,7 @@ The `results` folder contains comparison graphs illustrating the accuracies of v
 The comparison graphs serve as a visual aid for evaluating and selecting the most effective model for the given task. By analyzing the accuracy trends and performance differences among models, stakeholders can make informed decisions regarding model selection and optimization strategies.
 
 
-# Script
+# Scripts
 
 [Model_play.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Classifiers/Model_play.py)
 
