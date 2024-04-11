@@ -22,9 +22,6 @@ The provided script loads a dataset from a .npy file and prepares it for further
 - `open_npy_file(file_path)`: Loads data from a .npy file, handling potential errors such as file not found or other exceptions.
 - `integer_to_binary_array(integer_value, array_length=12)`: Converts an integer value to a binary array of specified length.
 
-## Example Usage
-The script loads a dataset stored in a .npy file located at a specific file path and prints the size of the loaded dataset.
-
 ## Data Processing
 - The loaded dataset is separated into feature matrix `X` and target vector `y`.
 - Unique integer labels present in the target vector `y` are extracted.
