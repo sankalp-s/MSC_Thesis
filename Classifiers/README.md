@@ -41,6 +41,15 @@ The Random Forest Classifier is an ensemble learning method that builds a collec
 This folder contains the trained models generated using scripts for various classifiers. The models are trained to classify actions in the Super Mario World game environment based on the extracted features.
 You can load these trained models into your Python environment using TensorFlow or scikit-learn library to perform classification tasks on new data.
 
+## Results
+
+[Results](https://github.com/sankalp-s/MSC_Thesis/tree/main/Classifiers/Results)
+
+The `results` folder contains comparison graphs illustrating the accuracies of various models used in the project. These graphs provide insights into the performance of different models and their suitability for the task at hand.
+
+The comparison graphs serve as a visual aid for evaluating and selecting the most effective model for the given task. By analyzing the accuracy trends and performance differences among models, stakeholders can make informed decisions regarding model selection and optimization strategies.
+
+
 # Script
 
 [Model_play.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Classifiers/Model_play.py)
