@@ -31,6 +31,27 @@ The script loads a dataset stored in a .npy file located at a specific file path
 - A mapping is created between the original integer labels and class indices for classification.
 
 ## Dataset Filtering
+
+| Class/Label | Action Taken        | Binary Array                        |
+|-------------|---------------------|-------------------------------------|
+| 0           | No action           | [0 0 0 0 0 0 0 0 0 0 0 0]           |
+| 8           | Spin Jump           | [0 0 0 0 0 0 0 0 1 0 0 0]           |
+| 16          | Move Right          | [0 0 0 0 0 0 0 1 0 0 0 0]           |
+| 24          | Right + Spin Jump   | [0 0 0 0 0 0 0 1 1 0 0 0]           |
+| 32          | Left                | [0 0 0 0 0 0 1 0 0 0 0 0]           |
+| 40          | Left + Spin Jump    | [0 0 0 0 0 0 1 0 1 0 0 0]           |
+| 48          | Left + Right        | [0 0 0 0 0 0 1 1 0 0 0 0]           |
+| 56          | Left + Right + Spin Jump | [0 0 0 0 0 0 1 1 1 0 0 0]     |
+| 64          | Down                | [0 0 0 0 0 1 0 0 0 0 0 0]           |
+| 80          | Down + Right        | [0 0 0 0 0 1 0 1 0 0 0 0]           |
+| 144         | Up + Right          | [0 0 0 0 1 0 0 1 0 0 0 0]           |
+| 2048        | Jump                | [1 0 0 0 0 0 0 0 0 0 0 0]           |
+| 2064        | Jump + Right        | [1 0 0 0 0 0 0 1 0 0 0 0]           |
+| 2072        | Jump + Spin + Right| [1 0 0 0 0 0 0 1 1 0 0 0]           |
+| 2080        | Jump + Left         | [1 0 0 0 0 0 1 0 0 0 0 0]           |
+| 2096        | Jump + Left + Right| [1 0 0 0 0 0 1 1 0 0 0 0]           |
+
+
 - Instances in the dataset where the target value is either 0, 16, 32, 40, 48, 56, 80, 2080, or 2096 are filtered out.
 - The filtered dataset is saved to a new .npy file.
 - The script prints the size of the filtered dataset.
