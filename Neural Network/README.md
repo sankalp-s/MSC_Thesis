@@ -1,6 +1,6 @@
 # Neural Network Training Summary:
 
-[ANN.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Neural%20Network/ANN.py)
+Script: [ANN.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Neural%20Network/ANN.py)
 
 #### Dataset:
 - Loaded a dataset containing features and labels for training a neural network.
