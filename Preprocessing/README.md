@@ -52,7 +52,7 @@ The script loads a dataset stored in a .npy file located at a specific file path
 | 2096        | Jump + Left + Right| [1 0 0 0 0 0 1 1 0 0 0 0]           |
 
 
-- Instances in the dataset where the target value is either 0, 16, 32, 40, 48, 56, 80, 2080, or 2096 are filtered out.
+- Instances in the dataset where the target value is either 0, 16, 32, 40, 48, 56, 80, 2080, or 2096 are filtered out and removed.
 - The filtered dataset is saved to a new .npy file.
 - The script prints the size of the filtered dataset.
 
