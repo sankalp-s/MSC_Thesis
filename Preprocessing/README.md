@@ -1,5 +1,4 @@
-# Dataset Loading and Preparation
-
+# Removing insignificant instances
 [Preprocessing_remove_instance.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Preprocessing/Preprocessing_remove_instance.py)
 
 The provided script loads a dataset from a .npy file and prepares it for further processing. Here's a breakdown of the code:
