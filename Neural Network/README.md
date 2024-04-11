@@ -16,9 +16,5 @@ Script: [ANN.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Neural%20Netw
 - Trained the model for 150 epochs with a batch size of 10.
 - Implemented early stopping with a patience of 10 to prevent overfitting.
 
-#### Results:
-- Achieved a maximum accuracy of [accuracy]% during training.
-- Evaluated model performance using accuracy and loss plots.
-
 #### Saved Model:
 - Saved the trained model for future use.
