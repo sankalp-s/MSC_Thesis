@@ -32,3 +32,14 @@ The Linear Support Vector Classifier (LinearSVC) is a linear classifier that sep
 
 The Random Forest Classifier is an ensemble learning method that builds a collection of decision trees during training and combines their predictions through voting or averaging to improve accuracy and robustness. It is particularly effective for handling high-dimensional data and complex classification tasks. The script implements the Random Forest Classifier algorithm, providing functionalities for training and prediction.
 
+# Folders
+
+## Trained Models
+
+[Trained_Models](https://github.com/sankalp-s/MSC_Thesis/tree/main/Classifiers/Trained_Models)
+
+This folder contains the trained models generated using scripts for various classifiers. The models are trained to classify actions in the Super Mario World game environment based on the extracted features.
+You can load these trained models into your Python environment using TensorFlow or scikit-learn library to perform classification tasks on new data.
+
+
+
