@@ -1,7 +1,22 @@
+# Removing Duplicate Rows from the Dataset
+[Preprocessing_duplicates.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Preprocessing/Preprocessing_duplicates.py)
+
+The provided script removes duplicate rows from a dataset. Here's a breakdown of the code:
+
+## Functions
+- `open_npy_file(file_path)`: Loads data from a .npy file, handling potential errors such as file not found or other exceptions.
+- `remove_duplicates(data)`: Identifies and removes duplicate rows from the input dataset.
+
+## Example Usage
+- The script loads a dataset from a .npy file located at a specific file path and prints its original shape.
+- Duplicate rows are removed using the `remove_duplicates` function.
+- The script prints the shape of the dataset after removing duplicates and the total number of duplicate rows found.
+
+
 # Removing insignificant instances
 [Preprocessing_remove_instance.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Preprocessing/Preprocessing_remove_instance.py)
 
-The provided script loads a dataset from a .npy file and prepares it for further processing. Here's a breakdown of the code:
+The provided script loads a dataset from a .npy file and prepares it for further processing.
 
 ## Functions
 - `open_npy_file(file_path)`: Loads data from a .npy file, handling potential errors such as file not found or other exceptions.
