@@ -1,4 +1,4 @@
-### Neural Network Training Summary:
+# Neural Network Training Summary:
 
 [ANN.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Neural%20Network/ANN.py)
 
