@@ -62,7 +62,7 @@ model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentro
 # Train model
 history = model.fit(X, y_categorical, epochs=150, batch_size=10, verbose=2)
 
-tf.keras.models.save_model(model,'/Users/sankalpssss/Documents/marioenv/mario/mario2/Models/Final Models/ANN_WDupli13')
+tf.keras.models.save_model(model,'/Users/sankalpssss/Documents/marioenv/mario/mario2/Models/Final Models/ANN_FINAL')
 
 # Plot accuracy
 plt.plot(history.history['accuracy'])
