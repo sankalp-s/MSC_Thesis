@@ -41,5 +41,27 @@ The Random Forest Classifier is an ensemble learning method that builds a collec
 This folder contains the trained models generated using scripts for various classifiers. The models are trained to classify actions in the Super Mario World game environment based on the extracted features.
 You can load these trained models into your Python environment using TensorFlow or scikit-learn library to perform classification tasks on new data.
 
+# Script
+
+[Model_play.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Classifiers/Model_play.py)
+
+This script demonstrates how to use a trained machine learning model to control an agent playing the Super Mario World game in a Retro environment.
+
+## Overview
+
+The script performs the following tasks:
+
+1. **Model Loading**: Loads a trained machine learning model saved using the joblib library. In this example, a RandomForest model is loaded from a file.
+
+2. **Environment Setup**: Sets up the Retro environment for playing the Super Mario World game. The desired game and state (level) are specified, and the observation type is set to image.
+
+3. **Action Prediction**: Defines a function to predict the action to take based on the current game state. The state is obtained from the RAM of the game environment and is processed to prepare it for input to the model. The model then predicts the action to take.
+
+4. **Action Execution**: Converts the predicted action into the appropriate format (binary array) and applies it to the game environment using the `env.step()` function. The environment is rendered to display the game state.
+
+5. **Loop**: The process repeats in a loop, continuously predicting and executing actions until the game is completed or terminated.
+
+This script provides a framework for automated gameplay using a trained machine learning model. It allows the agent to navigate and interact with the game environment in real-time, showcasing the potential of machine learning techniques in gaming applications.
+
 
 
