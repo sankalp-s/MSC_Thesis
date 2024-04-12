@@ -2,18 +2,20 @@
 
 ## Replay_model
 
-- **Last Commit Message:** Update
-- **Last Commit Date:** Now
+[Replay_model](https://github.com/sankalp-s/MSC_Thesis/tree/main/Neural%20Network/Replay_model)
 
-This folder contains the replay model files used for training and evaluation purposes. The replay model implements a technique for training models using past experiences stored in a replay buffer, enhancing learning efficiency and stability in reinforcement learning scenarios.
+This folder contains scripts and resources related to utilizing trained artificial neural network (ANN) models for controlling agents in the Super Mario World game environment. Specifically, it includes:
+
+[Model_Play_ANN.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Neural%20Network/Replay_model/Model_Play_ANN.py): This script utilizes a pre-trained ANN model to predict actions for the agent in the game environment. It loads the model, sets up the game environment, predicts actions based on the current game state, and executes these actions within the game.
 
 ## Scripts
 
-- **Last Commit Message:** Update README.md
-- **Last Commit Date:** 3 minutes ago
+[Scripts](https://github.com/sankalp-s/MSC_Thesis/tree/main/Neural%20Network/Scripts)
 
-The `Scripts` folder contains various scripts and utility files used in the project. These scripts may include data preprocessing scripts, model training scripts, evaluation scripts, and other supporting utilities essential for the project's development and execution.
+This folder contains files related to training a neural network model for controlling agents in the Super Mario World game environment.
 
 ## Trained_ANN_Models
 
-This folder houses the trained artificial neural network (ANN) models generated during the project's development. ANN models are trained machine learning models that mimic the structure and function of the human brain's neural networks. These models are trained on labeled datasets to perform tasks such as classification, regression, and pattern recognition.
+[Trained_ANN_Models](https://github.com/sankalp-s/MSC_Thesis/tree/main/Neural%20Network/Trained_ANN_Models)
+
+This folder houses the trained artificial neural network (ANN) models generated during the project's development. ANN models are trained machine learning models that mimic the structure and function of the human brain's neural networks. These models are trained on labelled datasets to perform tasks such as classification, regression, and pattern recognition.
