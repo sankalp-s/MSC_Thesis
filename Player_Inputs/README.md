@@ -1,4 +1,4 @@
-# Folder Descriptions
+# Folder Description
 
 ## Dataset
 
