@@ -1,4 +1,4 @@
-## MSC Thesis Issues
+## Common Issues
 
 ### 1.) Known Issue with gym 0.21.0
 
