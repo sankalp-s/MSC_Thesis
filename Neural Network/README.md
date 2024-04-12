@@ -1,20 +1,19 @@
-# Neural Network Training Summary:
+# Folder Descriptions
 
-Script: [ANN.py](https://github.com/sankalp-s/MSC_Thesis/blob/main/Neural%20Network/ANN.py)
+## Replay_model
 
-#### Dataset:
-- Loaded a dataset containing features and labels for training a neural network.
-- The dataset consists of flattened 13x13 extracted RAM arrays as features and single integer values representing actions as labels.
+- **Last Commit Message:** Update
+- **Last Commit Date:** Now
 
-#### Model Architecture:
-- Implemented a Sequential neural network model using TensorFlow and Keras.
-- Utilized Dense layers with ReLU activation for hidden layers and a Softmax activation for the output layer.
-- The model architecture includes three hidden layers with 100, 20, and 40 neurons respectively.
+This folder contains the replay model files used for training and evaluation purposes. The replay model implements a technique for training models using past experiences stored in a replay buffer, enhancing learning efficiency and stability in reinforcement learning scenarios.
 
-#### Training:
-- Compiled the model using the Adam optimizer and Sparse Categorical Crossentropy loss function.
-- Trained the model for 150 epochs with a batch size of 10.
-- Implemented early stopping with a patience of 10 to prevent overfitting.
+## Scripts
 
-#### Saved Model:
-- Saved the trained model for future use.
+- **Last Commit Message:** Update README.md
+- **Last Commit Date:** 3 minutes ago
+
+The `Scripts` folder contains various scripts and utility files used in the project. These scripts may include data preprocessing scripts, model training scripts, evaluation scripts, and other supporting utilities essential for the project's development and execution.
+
+## Trained_ANN_Models
+
+This folder houses the trained artificial neural network (ANN) models generated during the project's development. ANN models are trained machine learning models that mimic the structure and function of the human brain's neural networks. These models are trained on labeled datasets to perform tasks such as classification, regression, and pattern recognition.
